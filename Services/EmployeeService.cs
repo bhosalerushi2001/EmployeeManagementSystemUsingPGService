@@ -225,6 +225,7 @@ namespace EmployeeManagementSystem.Services
         }
 
 
+
         //calling add manager api by itself in additionalDetails
 
         public async Task<ModelEmployeeBasicDetails> AddBasicDetailsByMakePostRequest(ModelEmployeeBasicDetails details)
@@ -293,8 +294,18 @@ namespace EmployeeManagementSystem.Services
                 responseObject.Employees.Add(item);
             }
             return responseObject;
-        }        
-        
+        }
+
+        public async Task<ModelEmployeeAdditionalDetails> GetEmployeeAdditionalDetailsByBasicDetailsUId(FilterCriteriaAdditional filterCriteriaAdditional)
+        {
+            var addDetails = await GetAllEmployees();
+            var details = addDetails.FindAll(x => x.EmployeeBasicDetailsUId == filterCriteriaAdditional.FieldValue).FirstOrDefault();
+
+            var model=_mapper.Map<ModelEmployeeAdditionalDetails>(details);
+     
+
+            return model;
+        }
     }
     
 }

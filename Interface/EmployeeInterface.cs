@@ -36,5 +36,8 @@ namespace EmployeeManagementSystem.Interface
 
         Task<ModelEmployeeBasicDetails> AddBasicDetailsByMakePostRequest(ModelEmployeeBasicDetails details);
         Task<List<ModelEmployeeBasicDetails>> GetBasicDetailsByMakeGetRequest();
+
+
+        Task<ModelEmployeeAdditionalDetails> GetEmployeeAdditionalDetailsByBasicDetailsUId(FilterCriteriaAdditional filterCriteriaAdditional);
     }
 }
